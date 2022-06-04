@@ -1,0 +1,30 @@
+$primary-dark: #1F232D;
+.image-thumbnail{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    img{
+        width: auto;
+        height: auto;
+        aspect-ratio: 304/410;
+    }
+    figcaption{
+        color: white;
+        display: flex;
+        background-color: $primary-dark;
+        opacity: 0.9;
+        flex-direction: column;
+        bottom: 0;
+        position: absolute;
+        width: -webkit-fill-available;
+        align-items: start;
+        padding: 10px 10px;
+        gap: 5px;
+        span{
+            display: block;
+            font-size: .8rem;
+            font-weight: 600;
+        }
+    }
+}

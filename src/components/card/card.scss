@@ -1,0 +1,31 @@
+$primary-dark: #1F232D;
+.card{
+    height: 250px;
+    min-width: 350px;
+    background-color: $primary-dark;
+    display: flex;
+    flex-direction: row;
+    &__image-holder{
+        width: 185px;
+    }
+    &__info-holder{
+        width: auto;
+        font-size: 0.7rem;
+        color: #858585;
+        line-height: 1rem;
+        text-align: initial;
+        padding: 0px 10px;
+    }
+}
+
+.info-holder{
+    &__header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 5px;
+    }
+    &__description{
+        overflow-y: scroll;
+    }
+}
