@@ -1,10 +1,27 @@
+import { useContext, useEffect } from "react"
+import { queryContext } from "../../contexts/queryContext"
+import { fetchStatus } from "../../hooks/useQuery"
 import Card from "../card/card"
 import './cardList.scss'
 export default function CardList(){
-    const data = [1,2,3,4,5,6,7,8]
-    return(
-        <div className="card-list" >
-            {data.map(() => <Card></Card>)}
-        </div>
-    )
+    const {state, getData} = useContext(queryContext)
+    useEffect(() => {
+        getData()
+    }, [])
+
+    if(state.status === fetchStatus.LOADING){
+        return (
+            <h2>Loading ...</h2>
+        )
+    }
+    if(state.status === fetchStatus.LOADING){
+        return (
+            <h2> Some Error occurred !</h2>
+        )
+    }
+    if(state.status === fetchStatus.COMPLETED) {
+        return ( <div className="card-list" >
+                {state.data.map((cardData) => <Card key={cardData.key} cardData={cardData}></Card>)}
+             </div>)
+    }
 }

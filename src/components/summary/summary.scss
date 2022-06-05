@@ -1,0 +1,19 @@
+.summary{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    &__image-holder{
+        height: inherit;
+        width: inherit;
+        position: relative;
+        top: -145px;
+
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+    &__description-holder{
+        text-align: left;
+        padding: 30px 30px;
+    }
+}

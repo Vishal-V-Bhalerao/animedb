@@ -1,0 +1,11 @@
+.dataset{
+    text-align: left;
+    margin: 10px 0px;
+    &__label{
+        font-weight: 1rem;
+        font-weight: 600;
+    }
+    &__value{
+        margin-top: 4px;
+    }
+}

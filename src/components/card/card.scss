@@ -11,6 +11,7 @@ $primary-dark: #1F232D;
     &__info-holder{
         width: auto;
         font-size: 0.7rem;
+        display: grid;
         color: #858585;
         line-height: 1rem;
         text-align: initial;
@@ -27,5 +28,19 @@ $primary-dark: #1F232D;
     }
     &__description{
         overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 0.3rem;
+          }
+          
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          }
+          
+          &::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 1px solid slategrey;
+            border-radius: 5px;
+          }
     }
+    
 }
