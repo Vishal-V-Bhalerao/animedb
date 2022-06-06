@@ -1,7 +1,10 @@
 .home-page{
     display: flex;
     justify-content: center;
-    &__container{
-        max-width: 1440px;
-    }
+    background-color: #13171D;
+}
+
+.list-container{
+    max-width: 1640px;
+    margin: auto;
 }

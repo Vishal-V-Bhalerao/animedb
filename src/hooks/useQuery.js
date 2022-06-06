@@ -1,4 +1,6 @@
 import { useReducer } from "react"
+import  getListQuery  from "../queries/listQuery"
+import  getDetailQuery  from "../queries/detailsQuery"
 const URL = 'https://graphql.anilist.co'
 export const fetchStatus = {
     NOT_STARTED: 'not started',
@@ -6,11 +8,32 @@ export const fetchStatus = {
     COMPLETED: 'completed',
     ERROR: 'error',
 }
-export function useQuery() {
+export const mediaSort = {
+    TITLE_ENGLISH: 'TITLE_ENGLISH',
+    TITLE_ENGLISH_DESC: 'TITLE_ENGLISH_DESC',
+    TITLE_NATIVE: 'TITLE_NATIVE',
+    TITLE_NATIVE_DESC: 'TITLE_NATIVE_DESC',
+    TYPE: 'TYPE',
+    TYPE_DESC: 'TYPE_DESC',
+    FORMAT: 'FORMAT',
+    FORMAT_DESC: 'FORMAT_DESC',
+    SCORE: 'SCORE',
+    SCORE_DESC: 'SCORE_DESC',
+    POPULARITY: 'POPULARITY',
+    POPULARITY_DESC: 'POPULARITY_DESC',
+    TRENDING: 'TRENDING',
+    TRENDING_DESC: 'TRENDING_DESC',
+    STATUS: 'STATUS',
+    STATUS_DESC: 'STATUS_DESC',
+    SEARCH_MATCH: 'SEARCH_MATCH',
+    FAVOURITES: 'FAVOURITES',
+    FAVOURITES_DESC: 'FAVOURITES_DESC',
+}
+export function useQuery(data) {
 
     const initialState = {
         status: fetchStatus.NOT_STARTED,
-        data: []
+        data: null
     }
     const reducer = function(state, action){
         switch(action.type){
@@ -20,6 +43,7 @@ export function useQuery() {
                     data: []
                 }
             case 'FETCH_COMPLETED':
+
                 return {
                     status: fetchStatus.COMPLETED,
                     data: action.payload
@@ -36,50 +60,18 @@ export function useQuery() {
     const [state, dispatch] = useReducer(reducer, initialState)
     
     function getData(){
+        let query;
+        let variables;
         dispatch({type: 'FETCH_DATA'})
-        var query = `
-        query{
-            Page{
-             media{
-              id
-              popularity
-              averageScore
-              title {
-                romaji
-                english
-                native
-                userPreferred
-              }
-              type
-              status
-              description
-              startDate {
-                year
-                month
-                day
-              }
-              endDate {
-                year
-                month
-                day
-              }
-              season
-              episodes
-              source
-              coverImage {
-                extraLarge
-                large
-                medium
-                color
-              }
-              bannerImage
-              genres
-            } 
-            }
-          }          
-            `;
-
-        var variables = null;
+        if(data.id){
+            const {detailsQuery, detailsVariables} = getDetailQuery(data.id)
+            query = detailsQuery;
+            variables = detailsVariables;
+        }else{
+            const {listQuery, listVariables} = getListQuery(data.pageSize, data.pageNumber, data.sort)
+            query = listQuery;
+            variables = listVariables;
+        }
         const options = {
             method: 'POST',
             headers: {
@@ -103,9 +95,9 @@ export function useQuery() {
         });
     }
         
-    function handleData(data) {
-        console.log(data.data.Page.media)
-        dispatch({type: 'FETCH_COMPLETED', payload: data.data.Page.media})
+    function handleData(res) {
+        // console.log(data)
+        dispatch({type: 'FETCH_COMPLETED', payload: data.id ? res.data.Media : res.data.Page.media})
     }
     
     function handleError(error) {

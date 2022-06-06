@@ -1,26 +1,41 @@
 .details{
+    
     &__container{
         margin: auto;
-        max-width: 1440px;
     }
     &__banner-holder{
         width: 100vw;
         height: 350px;
     }
     &__summary-holder{
+        margin: auto;
         height: 350px;
-    }
-    &__data-holder{
-        display: grid;
-        grid-template-columns: 1fr 4fr;
+        max-width: 1440px;
     }
 }
-
+.additional{
+    background-color: #EDF1F5;
+}
 .data-holder{
+        max-width: 1440px;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        margin: auto;
+        gap:20px;
+
     &__information-holder{
         height: 1000px;
+        margin: auto;
+        width: 100%;
+        background-color: white;
+        margin-top: 20px;
+        border-radius: 6px;
     }
     &__characters-holder{
+        margin-top: 20px;
+        // margin: auto;
+        // justify-content: center;
+        // width: 500px;
         background-color:crimson;
     }
 }

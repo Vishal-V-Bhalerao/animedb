@@ -1,27 +1,60 @@
+import { useEffect } from 'react'
+import { useParams } from 'react-router'
+import { useQuery } from '../../hooks/useQuery'
+import { fetchStatus } from '../../hooks/useQuery'
 import Banner from '../banner/banner'
 import Dataset from '../dataset/dataset'
 import Summary from '../summary/summary'
 import './details.scss'
 export default function Details(){
-    const data = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    const {id} = useParams()
+    const params = {
+        id
+    }
+    const {state, getData} = useQuery(params)
+    useEffect(() => {
+        getData()
+    },[])
+    function getDataList(){
+        const dataArr = []
+        for(let ele in state.data){
+            if(ele !== 'description' && typeof state.data[ele] !== 'object' ){ // typeof state.data[ele] == 'string'
+                dataArr.push(<Dataset label={ele} value={state.data[ele]} ></Dataset>)
+            }
+        }
+        return dataArr
+    }
+    if(state.status === fetchStatus.LOADING){
+        return (
+            <h2>Loading ...</h2>
+        )
+    }
+    if(state.status === fetchStatus.LOADING){
+        return (
+            <h2> Some Error occurred !</h2>
+        )
+    }
+    if(state.status === fetchStatus.COMPLETED) {
+    console.log(state.data)
     return(
         <div className="details" >
             <div className="details__banner-holder" >
-                <Banner></Banner>
+                <Banner {...state.data}></Banner>
             </div>
             <div className='details__container'>
                 <div className="details__summary-holder" >
-                    <Summary></Summary>
+                    <Summary {...state.data} ></Summary>
                 </div>
-                <div className="details__data-holder">
-                    <div className="data-holder__information-holder">
-                        {data.map(() => {
-                           return <Dataset></Dataset>
-                        })}
+                <div className="additional">
+                        <div className='data-holder'>
+                            <div className="data-holder__information-holder">
+                               {getDataList()}
+                            </div>
+                            <div className="data-holder__characters-holder"></div>
+                        </div>
                     </div>
-                    <div className="data-holder__characters-holder"></div>
-                </div>
             </div>
         </div>
     )
+}
 }

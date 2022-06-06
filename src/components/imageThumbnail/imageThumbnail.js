@@ -1,9 +1,9 @@
 import './imageThumbnail.scss'
 import { useNavigate } from 'react-router-dom'
-export default function ImageThumbnail({src}){
+export default function ImageThumbnail({id, src}){
     const navigate = useNavigate()
     function handleClick(){
-        navigate('/details')
+        navigate(`/details/${id}`)
     }
     return(
         <figure onClick={handleClick} className="image-thumbnail">

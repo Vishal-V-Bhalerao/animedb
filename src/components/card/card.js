@@ -1,11 +1,11 @@
 import ImageThumbnail from '../imageThumbnail/imageThumbnail'
 import './card.scss'
 export default function  Card({cardData}){
-    const {bannerImage, averageScore, coverImage: {extraLarge}, description, episodes, source,startDate, startDate: {day, month, year}, title: {english}} = cardData
+    const {id, averageScore, coverImage: {extraLarge}, description, episodes, source,startDate, startDate: {day, month, year}, title: {english}} = cardData
     return (
         <div className="card" >
             <div className="card__image-holder">
-                <ImageThumbnail src={extraLarge}></ImageThumbnail>
+                <ImageThumbnail id={id} src={extraLarge}></ImageThumbnail>
             </div>
             <div className="card__info-holder" >
                 <div className='info-holder__header' >

@@ -1,13 +1,37 @@
-import { useContext, useEffect } from "react"
-import { queryContext } from "../../contexts/queryContext"
-import { fetchStatus } from "../../hooks/useQuery"
+import { useEffect } from "react"
+import { useParams } from "react-router"
+import { fetchStatus, useQuery, mediaSort } from "../../hooks/useQuery"
 import Card from "../card/card"
 import './cardList.scss'
 export default function CardList(){
-    const {state, getData} = useContext(queryContext)
+
+    const {sortType} = useParams()
+    let sortingMethod = mediaSort.POPULARITY_DESC;
+    switch(sortType){
+        case 'Trending':
+            sortingMethod = mediaSort.TRENDING_DESC;
+            break;
+        case 'Top':
+            sortingMethod = mediaSort.SCORE_DESC;
+            break;
+        case 'Popular':
+            sortingMethod = mediaSort.POPULARITY_DESC;
+            break;
+        default:
+            sortingMethod = mediaSort.POPULARITY_DESC;
+    }
+
+    const params = {
+        pageSize: 50,
+        pageNumber: 1,
+        sort: sortingMethod
+    }
+
+    const {state, getData} = useQuery(params)
+    
     useEffect(() => {
         getData()
-    }, [])
+    }, [sortType])
 
     if(state.status === fetchStatus.LOADING){
         return (
@@ -20,8 +44,12 @@ export default function CardList(){
         )
     }
     if(state.status === fetchStatus.COMPLETED) {
-        return ( <div className="card-list" >
+        return ( 
+        <div className="card-container" >
+            <div className="card-list" >
                 {state.data.map((cardData) => <Card key={cardData.key} cardData={cardData}></Card>)}
-             </div>)
+            </div>
+        </div>
+        )
     }
 }

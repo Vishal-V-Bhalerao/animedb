@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css';
 import Details from './components/details/details';
 import { QueryProvider } from './contexts/queryContext';
+import CardList from './components/cardList/cardList';
+import CommonLayout from './layouts/layout';
 
 function App() {
   return (
@@ -10,8 +12,9 @@ function App() {
       <QueryProvider>
       <Router>
         <Routes>
-          <Route path='/' element={<HomePage></HomePage>} ></Route>
-          <Route path='/details' element={<Details></Details>} ></Route>
+          <Route path='/' element={<CommonLayout><HomePage/></CommonLayout>} ></Route>
+          <Route path='/details/:id' element={<CommonLayout><Details/></CommonLayout>}></Route>
+          <Route path='/list/:sortType' element={<CommonLayout><CardList/></CommonLayout>}></Route>
         </Routes>
       </Router>
       </QueryProvider>

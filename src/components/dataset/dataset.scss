@@ -1,6 +1,11 @@
 .dataset{
     text-align: left;
     margin: 10px 0px;
+    max-width: 150px;
+    overflow-wrap: break-word;
+    margin: 20px;
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
     &__label{
         font-weight: 1rem;
         font-weight: 600;
