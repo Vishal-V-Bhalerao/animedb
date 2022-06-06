@@ -18,6 +18,9 @@ $primary-dark: #1F232D;
     padding: 0px 10px;
     font-weight: 600;
     }
+    &:hover{
+        box-shadow: 2px 2px 7px 1px #403d3d36;
+    }
 }
 
 .info-holder{
