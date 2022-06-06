@@ -28,6 +28,14 @@ const listQuery = `
               season
               episodes
               source
+              studios {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
               coverImage {
                 extraLarge
                 large

@@ -22,7 +22,7 @@ export default function CardList(){
     }
 
     const params = {
-        pageSize: 50,
+        pageSize: 100,
         pageNumber: 1,
         sort: sortingMethod
     }
@@ -35,7 +35,9 @@ export default function CardList(){
 
     if(state.status === fetchStatus.LOADING){
         return (
-            <h2>Loading ...</h2>
+            <div className="list-loading" >
+                <h2>Loading ...</h2>
+            </div>
         )
     }
     if(state.status === fetchStatus.LOADING){

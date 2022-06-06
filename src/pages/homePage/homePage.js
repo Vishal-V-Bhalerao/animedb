@@ -8,9 +8,9 @@ export default function HomePage(){
         <div className="home-page" >
             <div className="home-page__container" >
                 <div className="list-container">
-                    <CategorySection categoryTitle='TRENDING' sort={ mediaSort.POPULARITY_DESC } ></CategorySection>
-                    <CategorySection categoryTitle='POPULAR' sort={ mediaSort.POPULARITY_DESC } ></CategorySection>
-                    <CategorySection categoryTitle='TOP RATED' sort={ mediaSort.POPULARITY_DESC } ></CategorySection>
+                    <CategorySection categoryTitle='Trending' sort={ mediaSort.POPULARITY_DESC } ></CategorySection>
+                    <CategorySection categoryTitle='Popular' sort={ mediaSort.POPULARITY_DESC } ></CategorySection>
+                    <CategorySection categoryTitle='Top' sort={ mediaSort.POPULARITY_DESC } ></CategorySection>
                     {/* <CategorySection categoryTitle='AIRING' sort={ mediaSort.POPULARITY_DESC } ></CategorySection> */}
                     {/* <CardList></CardList> */}
                 </div>

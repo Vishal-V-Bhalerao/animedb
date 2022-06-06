@@ -14,3 +14,12 @@
 .logo {
     cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+    .primary-top-navigation {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+    }
+}

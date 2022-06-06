@@ -24,7 +24,6 @@
         gap:20px;
 
     &__information-holder{
-        height: 1000px;
         margin: auto;
         width: 100%;
         background-color: white;
@@ -36,6 +35,13 @@
         // margin: auto;
         // justify-content: center;
         // width: 500px;
-        background-color:crimson;
+        // background-color:crimson;
     }
+}
+
+.details-loading{
+    height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

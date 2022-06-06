@@ -61,12 +61,25 @@ export default function getDetailQuery(id, type){
       }
       studios {
         edges {
-          id
+          node {
+            id
+            name
+          }
         }
       }
       staff {
         edges {
           id
+          node{
+            id
+            name{
+              first
+              last
+            }
+            image{
+              large
+            }
+          }
         }
       }
       reviews {
@@ -85,6 +98,9 @@ export default function getDetailQuery(id, type){
           name {
             first
             last
+          }
+          image{
+            large
           }
         }
       }

@@ -14,3 +14,35 @@
     width: 100vw;
     background-color: #13171D;
 }
+.list-loading{
+    height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (max-width: 1600px) {
+    .card-list{
+        margin: 0px 20px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .card-list{
+        margin: 0px 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card-list{
+        margin: 0px 20px;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card-list{
+        grid-template-columns: 1fr;
+    }
+}

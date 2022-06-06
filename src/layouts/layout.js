@@ -1,3 +1,4 @@
+import Footer from "../components/footer/footer";
 import { TopNavigationPanel } from "../components/topNavigationPanel/topNavigationPanel";
 
 export default function CommonLayout({children}){
@@ -5,6 +6,7 @@ export default function CommonLayout({children}){
         <>
         <TopNavigationPanel></TopNavigationPanel>
         {children}
+        <Footer></Footer>
         </>
     )
 }

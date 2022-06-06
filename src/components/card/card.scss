@@ -9,13 +9,14 @@ $primary-dark: #1F232D;
         width: 185px;
     }
     &__info-holder{
-        width: auto;
-        font-size: 0.7rem;
-        display: grid;
-        color: #858585;
-        line-height: 1rem;
-        text-align: initial;
-        padding: 0px 10px;
+    width: auto;
+    font-size: 0.7rem;
+    display: grid;
+    color: #e7e6e6;
+    line-height: 1rem;
+    text-align: initial;
+    padding: 0px 10px;
+    font-weight: 600;
     }
 }
 
@@ -28,6 +29,7 @@ $primary-dark: #1F232D;
     }
     &__description{
         overflow-y: scroll;
+        color: #979797;
         &::-webkit-scrollbar {
             width: 0.3rem;
           }

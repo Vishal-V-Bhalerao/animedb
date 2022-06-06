@@ -4,6 +4,7 @@ import { useQuery } from '../../hooks/useQuery'
 import { fetchStatus } from '../../hooks/useQuery'
 import Banner from '../banner/banner'
 import Dataset from '../dataset/dataset'
+import PersonList from '../personList/personList'
 import Summary from '../summary/summary'
 import './details.scss'
 export default function Details(){
@@ -26,7 +27,9 @@ export default function Details(){
     }
     if(state.status === fetchStatus.LOADING){
         return (
-            <h2>Loading ...</h2>
+            <div className='details-loading' >
+                <h2>Loading ...</h2>
+            </div>
         )
     }
     if(state.status === fetchStatus.LOADING){
@@ -35,7 +38,6 @@ export default function Details(){
         )
     }
     if(state.status === fetchStatus.COMPLETED) {
-    console.log(state.data)
     return(
         <div className="details" >
             <div className="details__banner-holder" >
@@ -50,7 +52,10 @@ export default function Details(){
                             <div className="data-holder__information-holder">
                                {getDataList()}
                             </div>
-                            <div className="data-holder__characters-holder"></div>
+                            <div className="data-holder__characters-holder">
+                                <PersonList listName='Characters' list={state.data.characters.nodes} ></PersonList>
+                                {/* <PersonList listName='Characters' list={state.data.staff.edges} ></PersonList> */}
+                            </div>
                         </div>
                     </div>
             </div>
