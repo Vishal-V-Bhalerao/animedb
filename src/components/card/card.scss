@@ -3,10 +3,12 @@ $primary-dark: #1F232D;
     height: 250px;
     min-width: 350px;
     background-color: $primary-dark;
-    display: flex;
-    flex-direction: row;
+    // display: flex;
+    // flex-direction: row;
+    display: grid;
+    grid-template-columns: 185px auto;
     &__image-holder{
-        width: 185px;
+        // width: 185px;
     }
     &__info-holder{
     width: auto;
@@ -33,6 +35,7 @@ $primary-dark: #1F232D;
     &__description{
         overflow-y: scroll;
         color: #979797;
+        height: 190px;
         &::-webkit-scrollbar {
             width: 0.3rem;
           }
